@@ -1,0 +1,48 @@
+// Yun Chi Leong
+// COSC 2030 01 Spring 2019
+// HelpSheet
+
+1. How to comment C++ code
+   Single line comment starts with //
+   Multiline comment starts with /* and ends with */
+
+2. How to comment Python code
+   Comments in Python start with # , and extend to the end of the physical line
+
+3. What kind of file has extension ".md"
+   md stands for Markdown. An MD file is a text file created using one of several possible dialects of the Markdown language. 
+   It is saved in plain text format but includes inline text symbols that define how to format text. (bold, indentation, headers, table formatting)
+   MD files are designed for authoring plain text documentation that can be easily converted to HTML 
+
+4. How to strip the final whitespace from a string in C++
+   Use the algorithm remove_if and isspace:   remove_if(str.begin(), str.end(), isspace);
+   Now the algorithm itself can't change the container(only modify the values), so it actually shuffles the values around and returns a pointer to where the end now should be. So we have to call string::erase to actually modify the length of the container:
+   str.erase(remove_if(str.begin(), str.end(), isspace), str.end());
+
+5. How to Create an Object of type T and its Pointer
+   Defining a function template follows the same syntax as a regular function, except that it is preceded by the template keyword and a series of template parameters enclosed in angle-brackets <>:
+   template <template-parameters> function-declaration 
+
+   template <class SomeType>
+   SomeType sum (SomeType a, SomeType b)
+   {
+   return a+b;
+   }
+
+   Templating resolves types at compile-time. When you assign the new Node<int> object to it, the pointer must know at compile-time what type exactly it is.
+   Node<int> and Node<std::vector> can be very different in the binaries (the binary layout of your object changes completely according the template parameter) so it doesn't make any sense to have an unresolved pointer type to a template.
+   You should define first a common parent class for your nodes:
+   
+   class NodeBase
+   { ... }
+
+   template<typename ValueT>
+   class Node : public NodeBase
+   {
+   ...
+   };
+
+   NodeBase* ptr;
+  
+6. What is the class of the ops variable? (Review Ch. 5 of the Tutorial.) And what are the other general-purpose built-in container data structures in Python?
+   ops is a set. Data containers such as List, Structs and Dictionary are facilitate efficient data storage and retrieval. This feature supports modular programming which is essential for breaking down complex programming task into small manageble subtasks. 
